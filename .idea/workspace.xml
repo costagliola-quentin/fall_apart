@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92d04b80-8b75-4572-aa84-b28d18761cd8" name="Changes" comment="shelf tools init">
-      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
+    <list default="true" id="92d04b80-8b75-4572-aa84-b28d18761cd8" name="Changes" comment="package init">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725453690615</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="package init">
+      <option name="closed" value="true" />
+      <created>1725453983847</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1725453983847</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -294,6 +302,7 @@
     <MESSAGE value="remove gitignore" />
     <MESSAGE value="add gitignore back" />
     <MESSAGE value="shelf tools init" />
-    <option name="LAST_COMMIT_MESSAGE" value="shelf tools init" />
+    <MESSAGE value="package init" />
+    <option name="LAST_COMMIT_MESSAGE" value="package init" />
   </component>
 </project>

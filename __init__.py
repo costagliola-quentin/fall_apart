@@ -1,1 +1,1 @@
-from scripts import core
+from .scripts import core
