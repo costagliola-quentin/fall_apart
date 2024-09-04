@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92d04b80-8b75-4572-aa84-b28d18761cd8" name="Changes" comment="add gitignore back">
-      <change afterPath="$PROJECT_DIR$/scripts/core.py" afterDir="false" />
+    <list default="true" id="92d04b80-8b75-4572-aa84-b28d18761cd8" name="Changes" comment="shelf tools init">
+      <change afterPath="$PROJECT_DIR$/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/install.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/__init__.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -234,7 +232,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725445077596</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="shelf tools init">
+      <option name="closed" value="true" />
+      <created>1725453690615</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1725453690615</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -287,6 +293,7 @@
     <MESSAGE value="origin to main" />
     <MESSAGE value="remove gitignore" />
     <MESSAGE value="add gitignore back" />
-    <option name="LAST_COMMIT_MESSAGE" value="add gitignore back" />
+    <MESSAGE value="shelf tools init" />
+    <option name="LAST_COMMIT_MESSAGE" value="shelf tools init" />
   </component>
 </project>
