@@ -1,0 +1,8 @@
+setup.py
+app/__init__.py
+app/core.py
+fall_apart.egg-info/PKG-INFO
+fall_apart.egg-info/SOURCES.txt
+fall_apart.egg-info/dependency_links.txt
+fall_apart.egg-info/requires.txt
+fall_apart.egg-info/top_level.txt
