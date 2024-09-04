@@ -4,3 +4,8 @@
 /.gitignore
 /.build/
 /.dist/
+/build/
+/build/
+/.venv/
+/dist/
+/fall_apart.egg-info/
