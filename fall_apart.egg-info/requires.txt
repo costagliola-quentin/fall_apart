@@ -1,5 +1,0 @@
-opencv-python
-pyautogui
-pyaudio
-twine
-setuptools
