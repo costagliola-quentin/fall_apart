@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92d04b80-8b75-4572-aa84-b28d18761cd8" name="Changes" comment="package init">
+    <list default="true" id="92d04b80-8b75-4572-aa84-b28d18761cd8" name="Changes" comment="core.unplugNodeInputOutput">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/core.py" afterDir="false" />
     </list>
@@ -272,7 +272,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725455599198</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="core.unplugNodeInputOutput">
+      <option name="closed" value="true" />
+      <created>1725524074601</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1725524074601</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -327,6 +335,7 @@
     <MESSAGE value="add gitignore back" />
     <MESSAGE value="shelf tools init" />
     <MESSAGE value="package init" />
-    <option name="LAST_COMMIT_MESSAGE" value="package init" />
+    <MESSAGE value="core.unplugNodeInputOutput" />
+    <option name="LAST_COMMIT_MESSAGE" value="core.unplugNodeInputOutput" />
   </component>
 </project>

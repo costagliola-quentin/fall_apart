@@ -2,7 +2,8 @@ import hou
 
 
 def createNull():
-    """Creates a Null node at the output of the selected node."""
+    """Creates a Null node at the output of the selected node.
+    Hotkey: F12"""
     def getOutputWires(node):
         result = []
         for i in node.outputs():
@@ -15,32 +16,29 @@ def createNull():
     if slection == ():
         hou.ui.displayMessage("select node please")
     else:
-        ### "sel" = dernier noeud dans la liste des noeuds sÃƒÂ©lectionnÃƒÂ©s
         sel = slection[-1]
         down_conn = sel.outputConnections()
         all_down = getOutputWires(sel)
 
-        ### Bouge tous les noeuds "getOutputWires" de 1 vers le bas
+        ### Moves all the "getOutputWires" nodes of 1 unit down.
         for i in all_down:
             i.move((0, -1))
 
-        ### "par" = le noeud parent, celui qui va crÃƒÂ©er le nouveau nul
+        ### "par" = the parent node, the one creating the new null
         par = sel.parent()
         nul = par.createNode(node_type_name="null", node_name='OUT')
-        ### Positionne le nul -1 sous "sel"
         nul.setPosition(sel.position() - hou.Vector2(0, 1))
-        ### connect
         nul.setInput(0, sel)
-        ### color
         nul.setColor(hou.Color((.85, .1, 00)))
 
-        ### RÃƒÂ©tablit les connections en dessous de "sel"
+        ### Reset all the connections before sel
         for i in down_conn:
             i.outputNode().setInput(i.inputIndex(), nul, 0)
 
 
 def switchCooking():
-    """Switches cooking on or off."""
+    """Switches cooking on or off.
+    Hotkey: Ctrl + E"""
     mode = hou.updateModeSetting().name()
 
     if mode == 'AutoUpdate':
@@ -50,7 +48,8 @@ def switchCooking():
 
 
 def connectNode():
-    """Connect nodes, from A to B."""
+    """Connect nodes, from A to B.
+    Hotkey: Alt + E"""
     inputs = hou.selectedNodes()[1:]
     target = hou.selectedNodes()[0]
     target_con = len(target.inputConnections())
@@ -59,7 +58,8 @@ def connectNode():
 
 
 def objectMerge():
-    """ Creates an object merge node linked to the selected object."""
+    """ Creates an object merge node linked to the selected object.
+    Hotkey: Ctrl + Alt + E"""
     sel = hou.selectedNodes()
 
     if len(sel) == 1:
@@ -70,9 +70,9 @@ def objectMerge():
         mkMerge = curPath.createNode("object_merge")
         mkMerge.setPosition(pos)
         try:
-            mkMerge.setName(sel[0].name() + "_merge")
+            mkMerge.setName("merge_" + sel[0].name())
         except:
-            mkMerge.setName(sel[0].name() + "_merge1")
+            mkMerge.setName("merge_" + sel[0].name() + "1")
         mkMerge.parm("xformtype").set(1)
         mkMerge.parm("objpath1").set(objPath)
 
@@ -86,6 +86,8 @@ def objectMergeOut():
 
 
 def unplugNodeInputOutput():
+    """Unplug a node from its inputs and outputs
+    Hotkey: Alt + E"""
     sel = hou.selectedNodes()
 
     if sel == ():
