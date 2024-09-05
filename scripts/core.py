@@ -83,3 +83,21 @@ def objectMergeIn():
 
 def objectMergeOut():
     pass
+
+
+def unplugNodeInputOutput():
+    sel = hou.selectedNodes()
+
+    if sel == ():
+        print('You have to select at least one node!')
+    else:
+        for node in sel:
+            # Unplug all input connections
+            for i in range(len(node.inputConnections())):
+                node.setInput(i, None)
+
+            # Unplug all output connections
+            output_connections = node.outputConnections()
+            for conn in output_connections:
+                output_node = conn.outputNode()
+                output_node.setInput(conn.inputIndex(), None)
