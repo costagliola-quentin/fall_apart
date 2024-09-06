@@ -1,4 +1,4 @@
-import hou
+import hou, os
 
 
 def createNull():
@@ -49,7 +49,7 @@ def switchCooking():
 
 def connectNode():
     """Connect nodes, from A to B.
-    Hotkey: Alt + E"""
+    Hotkey: Ctrl + Shift + E"""
     inputs = hou.selectedNodes()[1:]
     target = hou.selectedNodes()[0]
     target_con = len(target.inputConnections())
@@ -59,7 +59,7 @@ def connectNode():
 
 def objectMerge():
     """ Creates an object merge node linked to the selected object.
-    Hotkey: Ctrl + Alt + E"""
+    Hotkey: Alt + Shift + E"""
     sel = hou.selectedNodes()
 
     if len(sel) == 1:
@@ -103,3 +103,139 @@ def unplugNodeInputOutput():
             for conn in output_connections:
                 output_node = conn.outputNode()
                 output_node.setInput(conn.inputIndex(), None)
+
+
+def createFileCache():
+    """Creates a labs_file_cache, and a fall_apart_preview, set default parms if needed."""
+
+    # Create labs filecache after selection
+    sel = hou.selectedNodes()
+    sel = sel[-1]
+    filecache = sel.createOutputNode("labs::filecache")
+    filecache.parm('basename').set('`opname("..")`_`$OS`')
+    filecache.parm('hardenbasename').set(0)
+    filecache.parm('tpostrender').set(1)
+    reload_str = """hou.parm(hou.pwd()+'/reload').pressButton()"""
+    filecache.parm('postrender').setExpression(reload_str, hou.exprLanguage.Python)
+    filecache.parm('lpostrender').set('python')
+
+    pass
+
+
+class FallApartCache():
+    @staticmethod
+    def updateCachePath(kwargs):
+
+        node = kwargs['node']
+
+        # node.parm('extension').pressButton()
+        directory = node.evalParm('directory')
+        cache_name = node.evalParm('cache_name')
+        extension = node.parm('extension').evalAsString()
+
+        frame_range = node.parm('frame_range').evalAsString()
+        frame = ''
+        if frame_range != 'single':
+            frame = '.$F4'
+
+        node.parm('cache_path').set(os.path.join(directory, cache_name + frame + extension))
+
+    @staticmethod
+    def executeRenderGeometry(kwargs):
+        node = kwargs['node']
+
+        enable_wedge = node.evalParm('enable_wedge')
+
+        if not enable_wedge:
+            node.parm('executeRenderGeometry').pressButton()
+        else:
+            pass
+
+
+    @staticmethod
+    def executeOpenglPreview(kwargs):
+        print("Execute opengl preview")
+
+        cache_node = kwargs['node']
+        # filecache_node = hou.node(preview_node.evalParm('labs_file_cache_to_preview'))
+        # hou.node('./ropnet1/opengl1').parm('execute').pressButton()
+
+
+    @staticmethod
+    def executeBuildMosaic(kwargs):
+        print("Execute build mosaic")
+
+
+    @staticmethod
+    def executeBuildVideo(kwargs):
+        print("Execute Build MP4")
+
+    @staticmethod
+    def execute(kwargs):
+        print("\nExecute IN")
+
+        node = kwargs['node']
+
+        enable_wedge = node.evalParm('enable_wedge')
+
+        is_geo_enabled = node.evalParm('write_geometry')
+        is_preview_enabled = node.evalParm('render_opengl')
+        is_mosaic_enabled = node.evalParm('render_mosaic')
+        is_video_enabled = node.evalParm('render_mp4')
+
+
+
+
+
+
+        if is_geo_enabled:
+
+
+            pass
+        if is_preview_enabled:
+            pass
+        if is_mosaic_enabled:
+            pass
+        if is_video_enabled:
+            pass
+
+        print("Execute OUT")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
