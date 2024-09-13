@@ -77,14 +77,6 @@ def objectMerge():
         mkMerge.parm("objpath1").set(objPath)
 
 
-def objectMergeIn():
-    pass
-
-
-def objectMergeOut():
-    pass
-
-
 def unplugNodeInputOutput():
     """Unplug a node from its inputs and outputs
     Hotkey: Alt + E"""
