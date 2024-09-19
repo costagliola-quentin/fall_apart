@@ -14,7 +14,7 @@ def callback(function):
     """Creating decorator for callback functions."""
     def wrapper(*args, **kwargs):
         return_value = function(*args, **kwargs)
-        print('Callback function triggered.')
+        # print('Callback function triggered.')
         return return_value
 
     return wrapper
@@ -351,4 +351,44 @@ def open(kwargs):
         else:
             message = """Folder does not exist. Make sure its content has been properly rendered"""
             hou.ui.displayMessage(message, severity=hou.severityType.Error)
+
+
+@callback
+def timeDependentCache(kwargs):
+    """Triggered when user changes time_dependent_cache toggle value.
+    Updates the trange"""
+    node = kwargs['node']
+    time_dep = kwargs['script_value']
+    if time_dep == 'on':
+        node.parm('trange').set(1)
+    else:
+        node.parm('trange').set(0)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
