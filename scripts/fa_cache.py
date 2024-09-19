@@ -10,12 +10,35 @@ from . import utils
 reload(utils)
 
 
+def callback(function):
+    """Creating decorator for callback functions."""
+    def wrapper(*args, **kwargs):
+        return_value = function(*args, **kwargs)
+        print('Callback function triggered.')
+        return return_value
+
+    return wrapper
+
+
+def evaluation(function):
+    """Creating decorator for evaluation functions."""
+    def wrapper(*args, **kwargs):
+        return_value = function(*args, **kwargs)
+        return return_value
+
+    return wrapper
+
+
+@callback
 def onCreated(kwargs):
+    """Callback created when the fa_cache node is created."""
     node = kwargs['node']
     node.setColor(hou.Color(0.29, 0.565, 0.886))
 
 
+@callback
 def setToLastVersion(kwargs):
+    """Sets the version slider to the last version that exists on disk."""
     node = kwargs['node']
     geo_cache_folder = node.evalParm('geometry_cache_folder')
     children_folders = os.listdir(geo_cache_folder)
@@ -30,12 +53,16 @@ def setToLastVersion(kwargs):
     return max_ver
 
 
+@callback
 def incrementVersion(kwargs):
+    """Gets the last existing version and adds 1."""
     last_ver = setToLastVersion(kwargs)
     kwargs['node'].parm('version').set(last_ver + 1)
 
 
+@callback
 def deleteVersion(kwargs):
+    """Deletes the current version if it exists and after user confirmation."""
     node = kwargs['node']
     curr_version = node.evalParm('version_string')
     folders = [
@@ -60,7 +87,6 @@ def deleteVersion(kwargs):
 
     for folder in folders:
         try:
-
             shutil.rmtree(folder)
             hou.ui.displayMessage('Folder and its content removed')
             return
@@ -70,6 +96,7 @@ def deleteVersion(kwargs):
 
 
 
+@callback
 def deleteEverything(kwargs):
     """Deletes the content of the geometry_cache_folder and image_cache_folder, after user confirmation."""
     node = kwargs['node']
@@ -87,12 +114,14 @@ def deleteEverything(kwargs):
                     raise Exception()
                 shutil.rmtree(folder)
                 hou.ui.displayMessage('Folder and its content removed')
-            except:
+            except Exception as e:
+                print(e)
                 hou.ui.displayMessage('Something wrong happened, folder not deleted')
     else:
         return
 
 
+@callback
 def saveToDisk(kwargs):
     """CALLBACK: Triggered when 'Save to Disk' button is pressed. Triggers the top_network OUT node."""
 
@@ -160,6 +189,7 @@ def saveToDisk(kwargs):
     nodegraphtopui.cookOutputNode(node.parm('target_top_network').evalAsNode())
 
 
+@callback
 def createWedgeNode(kwargs):
     """CALLBACK: Creates a wedge node inside the 'top_network/Wedges' folder."""
     node = kwargs['node']
@@ -174,6 +204,7 @@ def createWedgeNode(kwargs):
 
     # Dive inside the node in the network view
     network_editors = [pane for pane in hou.ui.paneTabs() if isinstance(pane, hou.NetworkEditor)]
+    network_editor = None
     if network_editors:
         network_editor = network_editors[0]
 
@@ -182,6 +213,7 @@ def createWedgeNode(kwargs):
     node.node('./top_network/Wedges').layoutChildren()
 
 
+@callback
 def task(kwargs):
     """CALLBACK: Triggered when the user updates the 'task' parm to update the 'video_cache_name' parm."""
     node = kwargs['node']
@@ -190,6 +222,7 @@ def task(kwargs):
 
 
 class OutputFileType(Enum):
+    """Defines an enum that represents the whole types of render that fa_cache can do."""
     GEOMETRY = 0
     RENDER = 1
     OVERLAY = 2
@@ -197,6 +230,7 @@ class OutputFileType(Enum):
     VIDEO = 4
 
 
+@evaluation
 def getCacheName(node, output_type):
     """EVALUATION: Sets the '{OutputFileType}_cache_name' parms values."""
     node = hou.pwd()
@@ -226,6 +260,7 @@ def getCacheName(node, output_type):
         return f'{base_name}{version}{task}.mp4'
 
 
+@evaluation
 def getOutputFile(node, output_type):
     """EVALUATION: Sets the '{OutputFileType}_output_file' parms values."""
 
@@ -255,6 +290,7 @@ def getOutputFile(node, output_type):
         return 0
 
 
+@callback
 def openTopNetwork(kwargs):
     """CALLBACK: Triggered when 'open_top_network_btn' is pressed."""
     desktop = hou.ui.curDesktop()
@@ -264,19 +300,24 @@ def openTopNetwork(kwargs):
     new_pane.setCurrentNode(node)
 
 
+@callback
 def open_base_folder(kwargs):
+    """Opens the base_folder."""
     path = kwargs['node'].evalParm('base_folder')
     if os.access(path, os.F_OK):
         # utils.open_explorer(path)
         os.startfile(path)
 
 
+@callback
 def open_base_render_folder(kwargs):
+    """Opens the base_render_folder"""
     path = kwargs['node'].evalParm('base_render_folder')
     if os.access(path, os.F_OK):
         os.startfile(path)
 
 
+@callback
 def open(kwargs):
     """Triggered by one of the open_<outputFileType> button"""
 
@@ -310,26 +351,4 @@ def open(kwargs):
         else:
             message = """Folder does not exist. Make sure its content has been properly rendered"""
             hou.ui.displayMessage(message, severity=hou.severityType.Error)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

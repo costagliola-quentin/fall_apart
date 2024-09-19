@@ -113,11 +113,8 @@ def createFileCache():
 
     pass
 
-
+"""
 class FallApartCache():
-    """
-    OUTDATED !
-    """
 
     @staticmethod
     def updateCachePath(kwargs):
@@ -208,7 +205,7 @@ class FallApartCache():
 
 
 
-
+"""
 
 
 
