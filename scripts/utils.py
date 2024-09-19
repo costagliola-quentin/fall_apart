@@ -1,6 +1,7 @@
 import hou
 import subprocess
 import os
+import re
 
 
 def fix_path(old_path, new_sep='/'):
@@ -18,6 +19,12 @@ def fix_path(old_path, new_sep='/'):
 
     new_path = _path
     return new_path
+
+
+def fix_string(string):
+    new = string.strip().replace(' ', '_')
+    new = re.sub(r"[^A-Za-z0-9\_]+", '', new)
+    return new
 
 
 def error(message, severity=hou.severityType.Error):
