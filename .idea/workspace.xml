@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="92d04b80-8b75-4572-aa84-b28d18761cd8" name="Changes" comment="fa_cache otl &amp; module updates.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/otls/build_otls.hipnc" beforeDir="false" afterPath="$PROJECT_DIR$/otls/build_otls.hipnc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/otls/fall_apart.dev.fa_cache.hdanc" beforeDir="false" afterPath="$PROJECT_DIR$/otls/fall_apart.dev.fa_cache.hdanc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/core.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/fa_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/fa_cache.py" afterDir="false" />
-    </list>
+    <list default="true" id="92d04b80-8b75-4572-aa84-b28d18761cd8" name="Changes" comment="fa_rotating points otl &amp; module updates." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -388,7 +382,23 @@
       <option name="project" value="LOCAL" />
       <updated>1726760159449</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="fa_rotating points otl &amp; module updates.">
+      <option name="closed" value="true" />
+      <created>1728049473643</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1728049473643</updated>
+    </task>
+    <task id="LOCAL-00040" summary="fa_rotating points otl &amp; module updates.">
+      <option name="closed" value="true" />
+      <created>1728049784093</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1728049784093</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -449,6 +459,7 @@
     <MESSAGE value="utils.py" />
     <MESSAGE value="tweak" />
     <MESSAGE value="fa_cache otl &amp; module updates." />
-    <option name="LAST_COMMIT_MESSAGE" value="fa_cache otl &amp; module updates." />
+    <MESSAGE value="fa_rotating points otl &amp; module updates." />
+    <option name="LAST_COMMIT_MESSAGE" value="fa_rotating points otl &amp; module updates." />
   </component>
 </project>
