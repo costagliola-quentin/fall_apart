@@ -48,7 +48,9 @@ def setToLastVersion(kwargs):
             child = child[1:]
             v_list.append(int(child))
 
-    max_ver = max(*v_list) if len(v_list) > 1 else 1
+    # print(type(v_list))
+    max_ver = max(v_list) if len(v_list) !=0 else 1
+    # print('max_ver' + str(max(v_list)))
     node.parm('version').set(max_ver)
     return max_ver
 
@@ -57,6 +59,7 @@ def setToLastVersion(kwargs):
 def incrementVersion(kwargs):
     """Gets the last existing version and adds 1."""
     last_ver = setToLastVersion(kwargs)
+    # print(last_ver)
     kwargs['node'].parm('version').set(last_ver + 1)
 
 
@@ -130,6 +133,7 @@ def saveToDisk(kwargs):
 
     # CHECK AUTO VERSION
     if node.evalParm('enable_version') and node.evalParm('enable_auto_version'):
+        print(node.evalParm('geometry_cache_folder'))
         if os.access(node.evalParm('geometry_cache_folder'), os.F_OK):
             incrementVersion(kwargs)
         else:
@@ -167,7 +171,7 @@ def saveToDisk(kwargs):
 
     cache_mode_parms = [
         'pdg_cachemode_render_geo',
-        'pdg_cachemode_render_opengl',
+        'pdg_cachemode_render_image',
         'pdg_cachemode_render_overlay',
         'pdg_cachemode_render_mosaic',
         'pdg_cachemode_render_video'
@@ -251,11 +255,11 @@ def getCacheName(node, output_type):
     if output_type == OutputFileType.GEOMETRY:
         return f'{base_name}{version}{wedge}{frame}{geometry_ext}'
     elif output_type == OutputFileType.RENDER:
-        return f'{base_name}{version}{wedge}{frame}.png'
+        return f'{base_name}{version}{wedge}{frame}.exr'
     elif output_type == OutputFileType.OVERLAY:
-        return f'{base_name}{version}{wedge}{frame}.png'
+        return f'{base_name}{version}{wedge}{frame}.exr'
     elif output_type == OutputFileType.MOSAIC:
-        return f'{base_name}{version}{frame}.png'
+        return f'{base_name}{version}{frame}.exr'
     elif output_type == OutputFileType.VIDEO:
         return f'{base_name}{version}{task}.mp4'
 
@@ -263,20 +267,22 @@ def getCacheName(node, output_type):
 @evaluation
 def getOutputFile(node, output_type):
     """EVALUATION: Sets the '{OutputFileType}_output_file' parms values."""
-
+    # node = kwargs['node']
     geo_cache_folder = node.evalParm('geometry_cache_folder')
     image_cache_folder = node.evalParm('image_cache_folder')
     cache_name = None
     version = '/' + node.evalParm('version_string') if node.evalParm('enable_version') else ''
     wedge = '/' + node.evalParm('wedge_string') if node.evalParm('enable_wedging') else ''
-    # frame = node.evalParm('frame_string')
+
+    renderer = node.parm('render_engine').evalAsString()
+    renderer = node.parm('custom_node_path').evalAsNode().name() if renderer.lower() == 'custom_node' else renderer
 
     if output_type == OutputFileType.GEOMETRY:
         cache_name = node.evalParm('geometry_cache_name')
         return f'{geo_cache_folder}{version}{wedge}/{cache_name}'
     elif output_type == OutputFileType.RENDER:
         cache_name = node.evalParm('render_cache_name')
-        return f'{image_cache_folder}{version}/render_opengl{wedge}/{cache_name}'
+        return f'{image_cache_folder}{version}/render_{renderer}{wedge}/{cache_name}'
     elif output_type == OutputFileType.OVERLAY:
         cache_name = node.evalParm('overlay_cache_name')
         return f'{image_cache_folder}{version}/overlay{wedge}/{cache_name}'
@@ -365,6 +371,15 @@ def timeDependentCache(kwargs):
         node.parm('trange').set(0)
 
 
+@evaluation
+def getRenderImageNodePath(node):
+    """Called in the fa_cache/top_network/render_image ROP Fetch"""
+
+    render_engine = node.parm('render_engine').evalAsString()
+    if render_engine == 'opengl':
+        return node.node('./top_network/ropnet1/opengl1').path()
+    elif render_engine.lower() == 'custom_node':
+        return node.parm('custom_node_path').evalAsNode().path()
 
 
 

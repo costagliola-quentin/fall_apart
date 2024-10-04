@@ -68,6 +68,7 @@ def objectMerge():
         pos = sel[0].position() + hou.Vector2(0, -1)
 
         mkMerge = curPath.createNode("object_merge")
+        mkMerge.setColor(hou.Color(0.451, 0.369, 0.796))
         mkMerge.setPosition(pos)
         try:
             mkMerge.setName("merge_" + sel[0].name())

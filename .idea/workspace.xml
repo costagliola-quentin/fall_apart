@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="92d04b80-8b75-4572-aa84-b28d18761cd8" name="Changes" comment="fa_cache otl &amp; module updates.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/otls/build_otls.hipnc" beforeDir="false" afterPath="$PROJECT_DIR$/otls/build_otls.hipnc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/otls/fall_apart.dev.fa_cache.hdanc" beforeDir="false" afterPath="$PROJECT_DIR$/otls/fall_apart.dev.fa_cache.hdanc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/core.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/core.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/fa_cache.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/fa_cache.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,6 +59,7 @@
     &quot;Python.main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/quentin.costagliola/Documents/houdini20.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
 }</component>
@@ -361,7 +364,31 @@
       <option name="project" value="LOCAL" />
       <updated>1726757973379</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="fa_cache otl &amp; module updates.">
+      <option name="closed" value="true" />
+      <created>1726759823882</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1726759823882</updated>
+    </task>
+    <task id="LOCAL-00037" summary="fa_cache otl &amp; module updates.">
+      <option name="closed" value="true" />
+      <created>1726760133765</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1726760133765</updated>
+    </task>
+    <task id="LOCAL-00038" summary="fa_cache otl &amp; module updates.">
+      <option name="closed" value="true" />
+      <created>1726760159449</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1726760159449</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
